@@ -1,0 +1,15 @@
+# Використовуємо базовий образ Python версії 3.8
+FROM python:3.8-slim
+
+# Копіюємо файли залежностей в контейнер та встановлюємо їх
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Копіюємо файли додатка в контейнер
+COPY . /app
+
+# Вказуємо робочу директорію
+WORKDIR /app
+
+# Встановлюємо команду для запуску додатка
+CMD ["python", "myapp.py"]
